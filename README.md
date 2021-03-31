@@ -1,4 +1,4 @@
-# Comida
+# Comida | Recipe Planner in Ruby on Rails
 
 Ruby on rails recipe planner. 
 

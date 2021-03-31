@@ -7,9 +7,10 @@ class MealPlansController < ApplicationController
 		@meal_plan = MealPlan.where("start_date <= ? AND end_date >= ?", Date.today, Date.today).first
 	end 
 	def new
+		# logger.debug "New article: #{params["meal_plan"][:start_date]} -> #{params["meal_plan"][:start_date]}"
 		@meal_plan = MealPlan.new( 
-			start_date: params[:start_date] || Date.today,
-			end_date: params[:end_date] || 6.days.from_now.to_date
+			start_date: params["meal_plan"].present? ? params["meal_plan"][:start_date] : Date.today,
+			end_date: params["meal_plan"].present? ? params["meal_plan"][:end_date] : 6.days.from_now.to_date
 		)
 		@meal_plan.build_meals
 	end
