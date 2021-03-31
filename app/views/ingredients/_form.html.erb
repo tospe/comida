@@ -1,0 +1,18 @@
+<%= form_with model: @ingredient do |form| %>
+<div class="field">
+	<%= form.label :name,  class:'label'%>
+	<div class="control">
+		<%= form.text_field :name, class:"input #{"is-danger" if @ingredient.errors.full_messages_for(:name).any? }" %>
+	</div>
+	<% @ingredient.errors.full_messages_for(:title).each do |message| %>
+		<p class="help is-danger"><%= message %></p>
+	<% end %>	
+</div>
+
+<div class="field is-grouped">
+	<div class="control">
+		<%= form.submit class:'button is-link is-light'%>
+	</div>
+</div>					
+
+<% end %>	

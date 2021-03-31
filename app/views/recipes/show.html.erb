@@ -1,0 +1,24 @@
+<section class="section is-small">
+	<h1 class="title"><%= @recipe.title %></h1>
+	<div class="block content">	
+		<p class="is-size-5">Ingredients</p>	
+		<ul>
+			<% @recipe.ingredient_at_recipes.each do |i| %>
+				<li> <%= i.ingredient.name %> <%= i.quantity %></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="block content">
+		<p class="is-size-5">Instructions</p>
+		<div class="field"> <%= markdown(@recipe.instructions) %> </div>
+	</div>
+	<div class="field is-grouped mb-5">
+		<div class="control">
+			<%= link_to "Edit", edit_recipe_path(@recipe), class:'button is-link is-light' %>
+			<%= link_to "Destroy", recipe_path(@recipe),
+					class:'button is-danger is-light',
+					method: :delete,
+					data: { confirm: "Are you sure?" } %>
+		</div>
+	</div>	
+</section>

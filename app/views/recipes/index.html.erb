@@ -1,0 +1,13 @@
+<section class="section is-small">
+	<h1 class="title">Recipes</h1>
+	<div class="buttons">
+		<%= link_to "New Recipe", new_recipe_path, class: "button is-link is-light" %>
+	</div>
+	<ul>
+	<% @recipes.each do |recipe| %>
+		<li>
+			<%= link_to recipe.title, recipe ,class:'is-size-4' %>
+		</li>
+	<% end %>
+	</ul>
+</section>

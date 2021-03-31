@@ -1,0 +1,9 @@
+<aside class="menu is-hidden-mobile">
+	<p class="menu-label">
+		General
+	</p>
+	<ul class="menu-list">
+		<li><%= link_to "Recipes", recipes_path, class: "#{ 'is-active' if  controller.controller_name == 'recipes'}" %> </li>
+		<li><%= link_to "Ingredients", ingredients_path, class: "#{ 'is-active' if  controller.controller_name == 'ingredients'}" %> </li>
+	</ul>
+</aside>

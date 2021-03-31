@@ -1,0 +1,25 @@
+<%= form_for @meal_plan do |form| %>
+	<div class="tile is-ancestor has-text-centered">
+    <%= form.fields_for :meals, form.object.meals.group_by(&:date) do |meal_fields| %>
+		<% if meal_fields.options[:child_index] % 2 == 0  %>
+		<div class="tile is-parent is-vertical px-1 my-3">
+			<p class="is-size-4" ><p><%= meal_fields.object.date %> <%= meal_fields.object.date.strftime("%A") %></p></p>
+			<article class="tile is-child box">
+				<%= meal_fields.hidden_field :id %>
+				<%= meal_fields.hidden_field :date %>
+				<div class="select"><%= meal_fields.collection_select :recipe_id, Recipe.all, :id, :title %></div>
+			</article>			
+		<% else %>
+			<article class="tile is-child box">
+				<%= meal_fields.hidden_field :id %>
+				<%= meal_fields.hidden_field :date %>
+				<div class="select"><%= meal_fields.collection_select :recipe_id, Recipe.all, :id, :title %></div>
+			</article>
+		</div>	
+		<% end %>
+    <% end %>
+	</div>
+	  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

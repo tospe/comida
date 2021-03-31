@@ -1,0 +1,30 @@
+<section class="hero is-info welcome is-small mt-6">
+	<div class="hero-body">
+		<div class="container">
+			<h1 class="is-size-3">
+				Meal Plan: <%= @meal_plan.start_date %> -> <%= @meal_plan.end_date %>
+			</h1>
+
+		</div>
+	</div>
+</section>
+
+<section class="info-tiles mt-6">
+	<div class="tile is-ancestor has-text-centered">
+		<% @meal_plan.meals.each_with_index do |meal, index| %>
+		<% if index % 2 == 0  %>
+			<div class="tile is-parent is-vertical px-1 my-3">
+				<p class="is-size-4" ><%= meal.date %> <%= meal.date.strftime("%A") %></p>
+				<article class="tile is-child box">
+					<p class="subtitle"><%= link_to meal.recipe.title, recipe_path(meal.recipe) %></p>
+				</article>			
+			<% else %>
+				<article class="tile is-child box">
+					<p class="subtitle"><%= link_to meal.recipe.title, recipe_path(meal.recipe) %></p>
+				</article>	
+			</div>	
+		<% end %>
+		<% end %>                                                                                         
+														
+	</div>
+</section>

@@ -1,0 +1,46 @@
+<%= form_with model: @recipe do |form| %>
+<div class="field">
+	<%= form.label :title,  class:'label'%>
+	<div class="control">
+		<%= form.text_field :title, class:"input #{"is-danger" if @recipe.errors.full_messages_for(:title).any? }" %>
+	</div>
+	<% @recipe.errors.full_messages_for(:title).each do |message| %>
+		<p class="help is-danger"><%= message %></p>
+	<% end %>	
+</div>
+
+<table class="table">
+	<tr class="th">
+		<th><%= form.label :ingredient, class:'label' %></th>
+		<th><%= form.label :quantity, class:'label' %></th>
+		<th> </th>
+	</tr>
+	<tbody id="nested-fields">
+		<%= form.fields_for :ingredient_at_recipes do |i_form| %>
+			<%= render 'ingredient_at_recipe_fields', f: i_form %>
+		<% end %>
+	</tbody>
+	
+</table>
+<div class="buttons">
+	<%= link_to_add_fields "Add Ingredient", form, :ingredient_at_recipes, "button is-info is-light" %>
+</div>
+
+
+<div class="field">
+	<%= form.label :instructions, class:'label' %>
+	<div class="control">
+		<%= form.text_area :instructions, class:"textarea #{"is-danger" if @recipe.errors.full_messages_for(:instructions).any? }" %><br>
+	</div>
+	<% @recipe.errors.full_messages_for(:instructions).each do |message| %>
+		<p class="help is-danger"><%= message %></p>
+	<% end %>						
+</div>
+
+<div class="field is-grouped">
+	<div class="control">
+		<%= form.submit class:'button is-link is-light'%>
+	</div>
+</div>					
+
+<% end %>	

@@ -1,0 +1,13 @@
+<section class="section is-small">
+	<h1 class="title">Meal Plans</h1>
+	<div class="buttons">
+		<%= link_to "New Meal Plan", new_meal_plan_path, class: "button is-link is-light" %>
+		<%= link_to "Current", meal_plans_path, class: "button is-success is-light" %>
+	</div>
+		<% @meal_plans.each do |meal_plan| %>
+			<div class="meal-plan">
+				<%= link_to "#{meal_plan.start_date} ->  #{meal_plan.end_date}", meal_plan_path(meal_plan) %> 
+			</div>
+		<% end %>
+	</div>
+</section>

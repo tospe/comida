@@ -1,0 +1,25 @@
+<section class="mt-6">
+	<%= form_for @meal_plan, url: new_meal_plan_path, method: "GET" do |form| %>
+		<div class="field-group">
+			<div class="field is-inline-block-desktop">
+				<label class="label"><%= form.label :start_date %></label>
+				<div class="control">
+					<%= form.text_field :start_date, type: "date", class:"input"  %>
+				</div>
+			</div>
+
+			<div class="field is-inline-block-desktop">
+				<label class="label"><%= form.label :end_date %></label>
+				<div class="control">
+					<%= form.text_field :end_date, type: "date", class:"input"  %>
+				</div>
+			</div>
+			<div class="field is-inline-block-desktop">
+				<%= link_to "Generate Plan", meal_plans_all_path, class: "button is-link is-light" %>	
+			</div>			
+		</div>					
+	<% end %>
+</section>
+<section class="info-tiles mt-6">
+	<%= render partial: "form" %>
+</section>

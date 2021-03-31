@@ -1,0 +1,11 @@
+<%= render 'list' %>
+<div class="field is-grouped my-5">
+	<div class="control">
+		<%= link_to "Edit", edit_meal_plan_path(@meal_plan), class:'button is-link is-light' %>
+		<%= link_to "Destroy", meal_plan_path(@meal_plan),
+				class:'button is-danger is-light',
+				method: :delete,
+				data: { confirm: "Are you sure?" } %>
+		<%= link_to "All", meal_plans_all_path, class: "button is-success is-light" %>					
+	</div>
+</div>	

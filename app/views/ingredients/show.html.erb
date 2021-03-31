@@ -1,0 +1,21 @@
+<section class="section is-small">
+	<h1 class="title"><%= @ingredient.name %></h1>
+
+	<div class="field is-grouped mb-5">
+		<div class="control">
+			<%= link_to "Edit", edit_ingredient_path(@ingredient), class:'button is-link is-light' %>
+			<%= link_to "Destroy", ingredient_path(@ingredient),
+					class:'button is-danger is-light',
+					method: :delete,
+					data: { confirm: "Are you sure?" } %>
+		</div>
+	</div>
+	<p class="is-size-4">Recipes</p>			
+	<ul>
+		<% @ingredient.ingredient_at_recipes.each do |i| %>
+			<li>
+				<%= link_to i.recipe.title , i.recipe ,class:'is-size-6' %>
+			</li>
+		<% end %>
+	</ul>			
+</section>
