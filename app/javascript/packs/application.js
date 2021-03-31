@@ -15,3 +15,6 @@ ActiveStorage.start()
 // From https://github.com/stevepolitodesign/rails-nested-form-example
 require("./nested-forms/customAddFields");
 require("./nested-forms/customRemoveFields");
+require("./behavior");
+
+
