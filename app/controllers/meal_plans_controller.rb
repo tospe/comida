@@ -2,7 +2,11 @@ class MealPlansController < ApplicationController
 
 	def all
 		@meal_plans = MealPlan.all.order("start_date desc")
-	end	
+	end
+	def edit
+		@meal_plan = MealPlan.find(params[:id])
+	end
+
 	def index
 		@meal_plan = MealPlan.where("start_date <= ? AND end_date >= ?", Date.today, Date.today).first
 	end 
@@ -25,6 +29,17 @@ class MealPlansController < ApplicationController
 			render :new
 		end
 	end
+
+	def update
+		@meal_plan = MealPlan.find(params[:id])
+		if @meal_plan.update(meal_plan_params)
+			redirect_to @meal_plan
+		else
+			render :edit
+		end
+	end  
+
+
 	def show
 		@meal_plan = MealPlan.find(params[:id])
 	end	

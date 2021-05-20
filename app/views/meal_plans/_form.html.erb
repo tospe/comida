@@ -5,13 +5,13 @@
 				<li><%= error %></li>
 			<% end %>
 		</ul>
-  	</div>
+  	</div> 
 <% end %>
 
 <%= form_for @meal_plan do |form| %>
 	<%= form.hidden_field :start_date %>
   	<%= form.hidden_field :end_date %>
-	<div class="tile is-ancestor has-text-centered">
+	<div class="tile is-ancestor has-text-centered is-flex-wrap-wrap">
     <%= form.fields_for :meals, form.object.meals.group_by(&:date) do |meal_fields| %>
 		<% if meal_fields.options[:child_index] % 2 == 0  %>
 		<div class="tile is-parent is-vertical px-1 my-3">
@@ -19,13 +19,13 @@
 			<article class="tile is-child box">
 				<%= meal_fields.hidden_field :id %>
 				<%= meal_fields.hidden_field :date %>
-				<div class="select"><%= meal_fields.collection_select :recipe_id, Recipe.all, :id, :title %></div>
+				<div class="select" ><%= meal_fields.collection_select :recipe_id, Recipe.all, :id, :title %></div>
 			</article>			
 		<% else %>
 			<article class="tile is-child box">
 				<%= meal_fields.hidden_field :id %>
 				<%= meal_fields.hidden_field :date %>
-				<div class="select"><%= meal_fields.collection_select :recipe_id, Recipe.all, :id, :title %></div>
+				<div class="select" ><%= meal_fields.collection_select :recipe_id, Recipe.all, :id, :title %></div>
 			</article>
 		</div>	
 		<% end %>
